@@ -33,7 +33,7 @@ dialog{border:1px solid #ddd1bf;border-radius:20px;padding:0;width:min(510px,cal
   <svg class="brand-flora" viewBox="0 0 45 60" fill="none" aria-hidden="true"><path d="M20 57C22 38 16 19 34 5M20 46C12 47 5 41 3 31c11-1 19 4 20 12M24 30C36 29 39 19 39 11 30 13 25 18 24 30" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
   <div><h1 class="brand-title">Ciclo de Vida</h1><div class="brand-sub">planejamento financeiro</div></div>
   <div class="menu-container"><button type="button" id="menuToggle" class="brand-menu" aria-label="Abrir menu" aria-expanded="false"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-    <div id="menuPop" class="menu-pop" hidden><button data-action="new-entry">+ Novo lançamento</button><button data-action="edit-period">Editar período e teto</button><button data-action="new-period">+ Novo período</button><button data-action="edit-cash">Saldo inicial</button><button data-action="export">Exportar dados (.json)</button><button data-action="import">Importar dados (.json)</button><button data-action="reset">Restaurar exemplos</button></div>
+    <div id="menuPop" class="menu-pop" hidden><button data-action="new-entry">+ Novo lançamento</button><button data-action="edit-period">Editar período e teto</button><button data-action="new-period">+ Novo período</button><button data-action="edit-cash">Saldo inicial</button><button data-action="export">Exportar dados (.json)</button><button data-action="import">Importar dados (.json)</button></div>
   </div>
  </div>
  <div class="accent-doodle"></div>
@@ -265,7 +265,6 @@ document.addEventListener('click',evt=>{
  if(action==='prev-period')shiftPeriod(-1);if(action==='next-period')shiftPeriod(1);
  if(action==='export')exportData();if(action==='import')el('importFile').click();
  if(action==='edit-cash'){el('initialBalance').value=fInput(state.opening);showDialog('cashDialog')}
- if(action==='reset'&&confirm('Restaurar os lançamentos de exemplo? Os dados atuais serão substituídos. Faça um backup antes se necessário.')){state=seed();save();render();window.scrollTo(0,0)}
  hideMenu();
 });
 el('menuToggle').addEventListener('click',()=>{const next=!el('menuPop').hidden;el('menuPop').hidden=next;el('menuToggle').setAttribute('aria-expanded',String(!next))});
